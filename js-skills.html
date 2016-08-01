@@ -368,7 +368,23 @@
 
 <script>
   "use strict";
-  // put your code here
+
+  function favoriteFood(){
+    var userFood = $('#favorite-food-input').val();
+    var agreeWithUser = "I like " + userFood + " too!";
+    return agreeWithUser
+  }
+  
+  function divFillIn(evt){
+     evt.preventDefault();
+     $('#agreeable-text').html(favoriteFood);
+
+  }
+  
+
+
+  $('#agreeable-form').submit(divFillIn)
+
 </script>
 
 <div class="hint">
