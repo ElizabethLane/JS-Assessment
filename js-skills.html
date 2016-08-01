@@ -414,7 +414,37 @@
 
 <script>
   "use strict";
-  // put your code here
+ 
+function StartGame(){
+
+  var randomNumber = Math.floor(Math.random() * 100);
+ 
+
+  var userGuess = prompt("Guess a number between 1 and 100!");
+
+  var playing = true;
+  
+  while (playing) {
+    if (userGuess > 100 || userGuess < 1){
+      alert("Your number is not between 1 and 100, press the button again!");
+      var playing = false;
+    } else if (userGuess == randomNumber) {
+      alert("Congrats! You guess the right number! Press the button to play again!");
+      var playing = false;
+    } else if (userGuess > randomNumber){
+      var userGuess = prompt("Your number is too high, guess again!");
+    } else {
+      var userGuess = prompt("Your number is too low, guess again!");
+    }
+  }
+
+};
+
+
+
+
+ $('#play-guessing-game').click(StartGame);
+
 </script>
 
 <div class="hint">
@@ -455,7 +485,47 @@
 
 <script>
   "use strict";
-  // put your code here
+
+function playGame(){
+  document.getElementById("play-guessing-game-2").disabled = true;
+  document.getElementById("number-guessed").disabled = false;
+  document.getElementById("try-this-number").disabled = false;
+  //NOTE: I tried to do this in JQuery with the .disabled and it
+  // didn't work.  Is there another method that would work in jQuery?
+  var randomNumber = Math.floor(Math.random() * 100);
+  console.log(randomNumber);
+
+  var userGuess = document.getElementById("number-guessed").value;
+  
+  var playing = true;
+  
+  while (playing) {
+    if (userGuess > 100 || userGuess < 1){
+      $('#number-guessing-msg').html("Your number is not between 1 and 100, press the button again!");
+      var playing = false;
+    } else if (userGuess == randomNumber) {
+      $('#number-guessing-msg').html("Congrats! You guess the right number! Press the button to play again!");
+      var playing = false;
+    } else if (userGuess > randomNumber){
+      $('#number-guessing-msg').html("Your number is too high, guess again!");
+      var userGuess = $('#number-guessed').val();
+    } else {
+      $('#number-guessing-msg').html("Your number is too low, guess again!");
+      var userGuess = $('#number-guessed').val();
+    }
+  //   document.getElementById("play-guessing-game-2").disabled = false;
+  //   document.getElementById("number-guessed").disabled = true;
+  //   document.getElementById("try-this-number").disabled = true;
+  }
+
+}
+
+
+$('#play-guessing-game-2').click(playGame);
+
+//I'm getting close here and could probably figure it out with more time.  I'm moving on
+//for sake of exposure for the next problem.
+
 </script>
 
 
@@ -492,9 +562,31 @@
 <script>
   "use strict";
 
-    var PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
+  var PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
 
-  // put the rest of your code here
+  function showPrime(){
+    var value, result = [];
+    for (var i = 0; i < 15; i++){
+      value = nextPrime(value);
+      result.push(value);
+    }
+    console.log(result);
+
+  }
+
+
+
+
+  $('make-prime-boxes').click(showPrime);
+
+
+  //I know I need a for loop here to check conditions, if they are true
+  // push to array, then choose first five index values of that array, place
+  // into a div that assigned CSS from PRIME_COLORS.  
+
+  //It's driving me nuts that I haven't completed this or the previous
+  //exercise, but it's 8pm and I need to start looking at new project ideas
+  //I'd like to come back to these and figure them out.
 </script>
 
 
